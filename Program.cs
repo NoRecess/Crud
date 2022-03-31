@@ -9,11 +9,7 @@ public class Program
         string menu = "";
         while(true)
         {
-            Console.WriteLine("======CRUDSystem======\n");
-            Console.WriteLine("1 - Cadastrar");    
-            Console.WriteLine("2 - Listar Usuários");
-            Console.WriteLine("3 - Editar Usuários");
-            Console.WriteLine("4 - Excluir Usuários\n");
+            PrintMenu();
             menu = Console.ReadLine();
             switch (menu)
             {
@@ -26,12 +22,37 @@ public class Program
                 case "3":
                     Update();
                     break;
+                case "4":
+                    Delete();
+                    break;
                 default:
                     Console.Clear();
                     Console.WriteLine("Opção inválida.");
                     break;
             }
         }      
+    }
+
+    private static void Delete()
+    {
+        int index = 0;
+        string nameToDelete = string.Empty;
+
+        Console.WriteLine("Digite o número de usuário para excluir: ");
+        Read();
+
+        index = Convert.ToInt32(Console.ReadLine());
+        Console.Clear();
+
+        for (int i = 0; i < pessoas.Count; i++)
+        {
+            if (i == index)
+            {
+                pessoas.RemoveAt(index);
+                Console.WriteLine("Nome excluído com sucesso!");
+                return;
+            }
+        }
     }
 
     private static void Update()
@@ -49,7 +70,7 @@ public class Program
 
         for (int i = 0; i < pessoas.Count; i++)
         {
-            if (i == index);
+            if (i == index)
             {
                 pessoas[i] = newName;
                 Console.WriteLine("Nome alterado com sucesso!");
@@ -76,5 +97,14 @@ public class Program
             Console.WriteLine(i + " - " + pessoas[i]);
         }
         Console.WriteLine("\n");
-     }           
+     } 
+    
+     private static void PrintMenu()
+     {
+        Console.WriteLine("======CRUDSystem======\n");
+        Console.WriteLine("1 - Cadastrar");
+        Console.WriteLine("2 - Listar Usuários");
+        Console.WriteLine("3 - Editar Usuários");
+        Console.WriteLine("4 - Excluir Usuários\n");
+    }
 }
