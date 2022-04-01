@@ -35,13 +35,12 @@ public class Program
 
     private static void Delete()
     {
-        int index = 0;
         string nameToDelete = string.Empty;
 
         Console.WriteLine("Digite o número de usuário para excluir: ");
         Read();
 
-        index = Convert.ToInt32(Console.ReadLine());
+        int index = Convert.ToInt32(Console.ReadLine());
         Console.Clear();
 
         for (int i = 0; i < pessoas.Count; i++)
