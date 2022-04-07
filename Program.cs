@@ -6,8 +6,8 @@ public class Program
 
     public static void Main()
     {
-        string menu = "";
-        while(true)
+        string menu = string.Empty;
+        while (true)
         {
             PrintMenu();
             menu = Console.ReadLine();
@@ -91,6 +91,11 @@ public class Program
      private static async void Read()
      {
         Console.Clear();
+        if (pessoas.Count == 0)
+        {
+            Console.WriteLine("Não há usuários cadastrados.\n");
+            return;
+        }
         for (int i = 0; i < pessoas.Count(); i++)
         {
             Console.WriteLine(i + " - " + pessoas[i]);
@@ -100,10 +105,12 @@ public class Program
     
      private static void PrintMenu()
      {
-        Console.WriteLine("======CRUDSystem======\n");
-        Console.WriteLine("1 - Cadastrar");
-        Console.WriteLine("2 - Listar Usuários");
-        Console.WriteLine("3 - Editar Usuários");
-        Console.WriteLine("4 - Excluir Usuários\n");
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine("\n\n");
+        Console.WriteLine("            ====== CRUDSystem ======\n");
+        Console.WriteLine("             1 - Cadastrar");
+        Console.WriteLine("             2 - Listar Usuários"); 
+        Console.WriteLine("             3 - Editar Usuários");
+        Console.WriteLine("             4 - Excluir Usuários\n");
     }
 }
