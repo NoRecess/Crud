@@ -2,7 +2,7 @@
 
 public class Program
 {
-    static List<string> pessoas = new List<string>();
+    static List<string> pessoas = new();
 
     public static void Main()
     {
@@ -27,7 +27,9 @@ public class Program
                     break;
                 default:
                     Console.Clear();
+                    AddRedColor();
                     Console.WriteLine("Opção inválida.");
+                    AddWhiteColor();
                     break;
             }
         }      
@@ -56,13 +58,12 @@ public class Program
 
     private static void Update()
     {
-        int index = 0;
         string newName = string.Empty;
 
         Console.WriteLine("Digite o número de usuário para editar: ");
         Read();
 
-        index = Convert.ToInt32(Console.ReadLine());
+        int index = Convert.ToInt32(Console.ReadLine());
         Console.Clear();
         Console.WriteLine("Digite o novo nome de usuário: ");
         newName = Console.ReadLine();
@@ -72,7 +73,10 @@ public class Program
             if (i == index)
             {
                 pessoas[i] = newName;
+                Console.Clear();
+                AddGreenColor();
                 Console.WriteLine("Nome alterado com sucesso!");
+                AddWhiteColor();
                 return;
             }
         }
@@ -105,12 +109,27 @@ public class Program
     
      private static void PrintMenu()
      {
-        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        
         Console.WriteLine("\n\n");
         Console.WriteLine("            ====== CRUDSystem ======\n");
         Console.WriteLine("             1 - Cadastrar");
         Console.WriteLine("             2 - Listar Usuários"); 
         Console.WriteLine("             3 - Editar Usuários");
         Console.WriteLine("             4 - Excluir Usuários\n");
+    }
+
+    private static void AddGreenColor()
+    {
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+    }
+
+    private static void AddWhiteColor()
+    {
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    private static void AddRedColor()
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
     }
 }
